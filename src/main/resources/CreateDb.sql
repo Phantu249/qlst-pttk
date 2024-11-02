@@ -1,10 +1,10 @@
--- Bảng tblSieuThi754
-CREATE TABLE IF NOT EXISTS tblSieuThi754 (
-                                             id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                             ten VARCHAR(255) DEFAULT 'Siêu thị điện máy',
-                                             diachi VARCHAR(255),
-                                             mota VARCHAR(255)
-);
+-- -- Bảng tblSieuThi754
+-- CREATE TABLE IF NOT EXISTS tblSieuThi754 (
+--                                              id INTEGER PRIMARY KEY AUTOINCREMENT,
+--                                              ten VARCHAR(255) DEFAULT 'Siêu thị điện máy',
+--                                              diaChi VARCHAR(255),
+--                                              moTa VARCHAR(255)
+-- );
 
 -- Bảng tblNguoiDung754
 CREATE TABLE IF NOT EXISTS tblNguoiDung754 (
@@ -12,11 +12,11 @@ CREATE TABLE IF NOT EXISTS tblNguoiDung754 (
                                                ten VARCHAR(255),
                                                username VARCHAR(255),
                                                password VARCHAR(255),
-                                               ngaysinh DATE DEFAULT CURRENT_TIMESTAMP,
-                                               diachi VARCHAR(255),
+                                               ngaySinh DATE DEFAULT CURRENT_TIMESTAMP,
+                                               diaChi VARCHAR(255),
                                                email VARCHAR(255),
                                                sdt VARCHAR(255),
-                                               vaitro VARCHAR(255)
+                                               vaiTro VARCHAR(255)
 );
 
 -- Bảng tblKhachHang754
@@ -29,10 +29,10 @@ CREATE TABLE IF NOT EXISTS tblKhachHang754 (
 -- Bảng tblNhanVien754
 CREATE TABLE IF NOT EXISTS tblNhanVien754 (
                                               maNV INTEGER PRIMARY KEY AUTOINCREMENT,
-                                              vitri VARCHAR(255),
+                                              viTri VARCHAR(255),
                                               idNguoiDung INTEGER,
-                                              idSieuThi INTEGER,
-                                              FOREIGN KEY (idSieuThi) REFERENCES tblSieuThi754(id) ON DELETE CASCADE,
+--                                               idSieuThi INTEGER,
+--                                               FOREIGN KEY (idSieuThi) REFERENCES tblSieuThi754(id) ON DELETE CASCADE,
                                               FOREIGN KEY (idNguoiDung) REFERENCES tblNguoiDung754(id) ON DELETE CASCADE
 );
 
@@ -46,16 +46,16 @@ CREATE TABLE IF NOT EXISTS tblNVGiaoHang754 (
 -- Bảng tblHoaDonNhap754
 CREATE TABLE IF NOT EXISTS tblHoaDonNhap754 (
                                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                ngaynhap DATE DEFAULT CURRENT_TIMESTAMP,
-                                                tonggia FLOAT DEFAULT 0,
+                                                ngayNhap DATE DEFAULT CURRENT_TIMESTAMP,
+                                                tongGia FLOAT DEFAULT 0,
                                                 maNV INTEGER,
                                                 FOREIGN KEY (maNV) REFERENCES tblNhanVien754(maNV) ON DELETE SET NULL
 );
 -- Bảng tblHoaDonTrucTiep754
 CREATE TABLE IF NOT EXISTS tblHoaDonTrucTiep754 (
                                                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                    ngaymua DATE DEFAULT CURRENT_TIMESTAMP,
-                                                    tonggia FLOAT DEFAULT 0,
+                                                    ngayMua DATE DEFAULT CURRENT_TIMESTAMP,
+                                                    tongGia FLOAT DEFAULT 0,
                                                     maNV INTEGER,
                                                     FOREIGN KEY (maNV) REFERENCES tblNhanVien754(maNV) ON DELETE SET NULL
 );
@@ -63,12 +63,12 @@ CREATE TABLE IF NOT EXISTS tblHoaDonTrucTiep754 (
 -- Bảng tblHoaDonTrucTuyen754
 CREATE TABLE IF NOT EXISTS tblHoaDonTrucTuyen754 (
                                                      id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                     ngayxuat DATE DEFAULT CURRENT_TIMESTAMP,
-                                                     tonggia FLOAT DEFAULT 0,
+                                                     ngayXuat DATE DEFAULT CURRENT_TIMESTAMP,
+                                                     tongGia FLOAT DEFAULT 0,
                                                      maKH INTEGER,
                                                      maNVKho INTEGER DEFAULT NULL,
                                                      maNVGiaoHang INTEGER DEFAULT NULL,
-                                                     trangthai VARCHAR(255) DEFAULT 'chua duyet',
+                                                     trangThai VARCHAR(255) DEFAULT 'chua duyet',
                                                      idGioHang INTEGER,
                                                      FOREIGN KEY (maKH) REFERENCES tblKhachHang754(maKH) ON DELETE SET NULL,
                                                      FOREIGN KEY (maNVKho) REFERENCES tblNhanVien754(maNV) ON DELETE SET NULL,
@@ -87,13 +87,13 @@ CREATE TABLE IF NOT EXISTS tblGioHang754 (
 CREATE TABLE IF NOT EXISTS tblMatHang754 (
                                              id INTEGER PRIMARY KEY AUTOINCREMENT,
                                              ten VARCHAR(255),
-                                             mota VARCHAR(255),
+                                             moTa VARCHAR(255),
                                              gia FLOAT,
-                                             soluong INTEGER DEFAULT 0,
+                                             soLuong INTEGER DEFAULT 0,
                                              idNhaCC INTEGER,
-                                             idSieuThi INTEGER,
-                                             FOREIGN KEY (idNhaCC) REFERENCES tblNhaCungCap754(id) ON DELETE SET NULL,
-                                             FOREIGN KEY (idSieuThi) REFERENCES tblSieuThi754(id) ON DELETE CASCADE
+--                                              idSieuThi INTEGER,
+--                                              FOREIGN KEY (idSieuThi) REFERENCES tblSieuThi754(id) ON DELETE CASCADE,
+                                             FOREIGN KEY (idNhaCC) REFERENCES tblNhaCungCap754(id) ON DELETE SET NULL
 );
 
 -- Bảng tblHinhAnh754
@@ -107,7 +107,7 @@ CREATE TABLE tblHinhAnh754 (
 -- Bảng tblChiTietHangTrucTiep754
 CREATE TABLE IF NOT EXISTS tblChiTietHangTrucTiep754 (
                                                          id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                         soluong INTEGER,
+                                                         soLuong INTEGER,
                                                          gia FLOAT,
                                                          idHoaDon INTEGER,
                                                          idMatHang INTEGER,
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS tblChiTietHangTrucTiep754 (
 -- Bảng tblChiTietHangNhap754
 CREATE TABLE IF NOT EXISTS tblChiTietHangNhap754 (
                                                      id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                     soluong INTEGER,
+                                                     soLuong INTEGER,
                                                      gia FLOAT,
                                                      idHoaDon INTEGER,
                                                      idMatHang INTEGER,
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS tblChiTietHangNhap754 (
 -- Bảng tblChiTietHangTrucTuyen754
 CREATE TABLE IF NOT EXISTS tblChiTietHangTrucTuyen754 (
                                                           id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                                          soluong INTEGER,
+                                                          soLuong INTEGER,
                                                           gia FLOAT,
                                                           idMatHang INTEGER,
                                                           idGioHang INTEGER,
@@ -140,6 +140,6 @@ CREATE TABLE IF NOT EXISTS tblChiTietHangTrucTuyen754 (
 CREATE TABLE IF NOT EXISTS tblNhaCungCap754 (
                                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                                                 ten VARCHAR(255),
-                                                diachi VARCHAR(255),
+                                                diaChi VARCHAR(255),
                                                 sdt VARCHAR(255)
 );

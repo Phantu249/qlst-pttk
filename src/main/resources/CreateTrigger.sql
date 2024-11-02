@@ -4,7 +4,7 @@ CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnNhap
     FOR EACH ROW
 BEGIN
     UPDATE tblMatHang754
-    SET soluong = soluong + NEW.soluong
+    SET soLuong = soLuong + NEW.soLuong
     WHERE id = NEW.idMatHang;
 END;
 
@@ -14,7 +14,7 @@ CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnBanTrucTiep
     FOR EACH ROW
 BEGIN
     UPDATE tblMatHang754
-    SET soluong = soluong - NEW.soluong
+    SET soLuong = soLuong - NEW.soLuong
     WHERE id = NEW.idMatHang;
 END;
 
@@ -24,7 +24,7 @@ CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnBanTrucTuyen
     FOR EACH ROW
 BEGIN
     UPDATE tblMatHang754
-    SET soluong = soluong - NEW.soluong
+    SET soLuong = soLuong - NEW.soLuong
     WHERE id = NEW.idMatHang;
 END;
 
@@ -53,7 +53,7 @@ CREATE TRIGGER IF NOT EXISTS update_tonggia_insert
     FOR EACH ROW
 BEGIN
     UPDATE tblHoaDonNhap754
-    SET tonggia = (SELECT SUM(soluong * gia)
+    SET tongGia = (SELECT SUM(soLuong * gia)
                    FROM tblChiTietHangNhap754
                    WHERE idHoaDon = NEW.idHoaDon)
     WHERE id = NEW.idHoaDon;
@@ -65,7 +65,7 @@ CREATE TRIGGER IF NOT EXISTS update_tonggia_delete
     FOR EACH ROW
 BEGIN
     UPDATE tblHoaDonNhap754
-    SET tonggia = (SELECT SUM(soluong * gia)
+    SET tongGia = (SELECT SUM(soLuong * gia)
                    FROM tblChiTietHangNhap754
                    WHERE idHoaDon = OLD.idHoaDon)
     WHERE id = OLD.idHoaDon;
@@ -75,7 +75,7 @@ END;
 CREATE TRIGGER IF NOT EXISTS trg_CreateKhachHang
     AFTER INSERT ON tblNguoiDung754
     FOR EACH ROW
-    WHEN NEW.vaitro = 'Khách hàng'
+    WHEN NEW.vaiTro = 'KHACH_HANG'
 BEGIN
     INSERT INTO tblKhachHang754 (idNguoiDung)
     VALUES (NEW.id);
