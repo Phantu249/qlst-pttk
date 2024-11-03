@@ -5,21 +5,26 @@ public class MatHang754 {
     private String ten;
     private float gia;
     private int soLuong;
-    private int idNhaCC;
+    private String moTa;
+    private String[] images;
+    private NhaCungCap754 NhaCC;
 
     public MatHang754() {
     }
 
-    public MatHang754(int id , String ten, int gia, int soLuong, int idNhaCC) {
+    public MatHang754(int id , String ten, int gia, int soLuong, String moTa, NhaCungCap754 NhaCC, String[] images) {
         this.id = id;
         this.ten = ten;
         this.gia = gia;
         this.soLuong = soLuong;
-        this.idNhaCC = idNhaCC;
+        this.moTa = moTa;
+        this.NhaCC = NhaCC;
+        this.images = images;
     }
 
 
     public int getId() {
+
         return id;
     }
 
@@ -51,11 +56,27 @@ public class MatHang754 {
         this.soLuong = soLuong;
     }
 
-    public int getIdNhaCC() {
-        return idNhaCC;
+    public NhaCungCap754 getNhaCC() {
+        return NhaCC;
     }
 
-    public void setIdNhaCC(int idNhaCC) {
-        this.idNhaCC = idNhaCC;
+    public void setNhaCC(NhaCungCap754 NhaCC) {
+        this.NhaCC = NhaCC;
+    }
+
+    public String[] getImages() {
+        return images;
+    }
+
+    public void setImages(String[] images) {
+        this.images = images;
+    }
+
+    public String getMoTa() {
+        return moTa;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
     }
 }

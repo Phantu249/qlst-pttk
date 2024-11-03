@@ -15,10 +15,10 @@ import java.io.IOException;
 public class LoginServlet754 extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") != null) {
-            response.sendRedirect("GDChinh754.jsp");
-            return;
-        }
+//        if (request.getSession().getAttribute("user") != null) {
+//            response.sendRedirect("GDChinh754.jsp");
+//            return;
+//        }
         request.getRequestDispatcher("GDDangNhap754.jsp").forward(request, response);
     }
 

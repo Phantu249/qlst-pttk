@@ -33,11 +33,11 @@ public class NhaCungCap754 {
         this.ten = ten;
     }
 
-    public String getDiachi() {
+    public String getDiaChi() {
         return diaChi;
     }
 
-    public void setDiachi(String diaChi) {
+    public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
 

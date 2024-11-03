@@ -1,3 +1,24 @@
+/*header*/
+/*.header {*/
+/*    background-color: #4e54c8; !* Màu nền cho header *!*/
+/*    color: white; !* Màu chữ *!*/
+/*    padding: 10px; !* Khoảng cách bên trong *!*/
+/*    text-align: center; !* Canh giữa nội dung *!*/
+/*}*/
+/*.header a {*/
+/*    color: white; !* Màu chữ cho liên kết *!*/
+/*    text-decoration: none; !* Bỏ gạch chân *!*/
+/*    margin: 0 15px; !* Khoảng cách giữa các nút *!*/
+/*    padding: 10px 15px; !* Khoảng cách bên trong nút *!*/
+/*    border-radius: 5px; !* Bo góc cho nút *!*/
+/*    transition: background-color 0.3s ease; !* Hiệu ứng chuyển màu nền *!*/
+/*}*/
+/*.header a:hover {*/
+/*    background-color: #8f94fb; !* Màu nền khi di chuột vào nút *!*/
+/*}*/
+
+
+/*Trang login*/
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #4e54c8, #8f94fb);
@@ -71,3 +92,4 @@ button:hover {
     font-size: 14px;
     text-align: center;
 }
+
