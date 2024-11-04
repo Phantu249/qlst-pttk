@@ -16,7 +16,13 @@ import java.util.ArrayList;
 @WebServlet("/in-xuat-kho")
 public class InXuatKho754 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idHD = Integer.parseInt(request.getParameter("idHD"));
+        String idHDStr = request.getParameter("idHD");
+        if (idHDStr == null) {
+            request.setAttribute("errorMessage", "Không tìm thấy hóa đơn.");
+            request.getRequestDispatcher("GDDuyetDon754.jsp").forward(request, response);
+            return;
+        }
+        int idHD = Integer.parseInt(idHDStr);
         HoaDonTrucTuyen754DAO hdDAO = new HoaDonTrucTuyen754DAO();
         HoaDonTrucTuyen754 hd = new HoaDonTrucTuyen754();
         hd.setId(idHD);
