@@ -41,6 +41,11 @@ public class DuyetDonServlet754 extends HttpServlet {
         String trangThai = request.getParameter("trangThai");
         NVKho754 nvk = new NVKho754();
         NguoiDung754 user = (NguoiDung754) request.getSession().getAttribute("user");
+        if (user == null) {
+            request.setAttribute("errorMessage", "Vui lòng đăng nhập.");
+            request.getRequestDispatcher("GDDangNhap754.jsp").forward(request, response);
+            return;
+        }
         nvk.setId(user.getId());
 
         HoaDonTrucTuyen754DAO hdDAO = new HoaDonTrucTuyen754DAO();

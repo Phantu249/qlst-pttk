@@ -1,5 +1,6 @@
 package dao;
 
+import models.HinhAnh754;
 import models.MatHang754;
 import models.NhaCungCap754;
 
@@ -28,12 +29,10 @@ public class MatHang754DAO extends DAO {
                 mh.setGia(rs.getFloat("gia"));
                 mh.setSoLuong(rs.getInt("soLuong"));
 
-                String queryImages = "SELECT duongDan FROM tblHinhAnh754 WHERE maMatHang = ? limit 1;";
-                PreparedStatement psImages = con.prepareStatement(queryImages);
-                psImages.setInt(1, mh.getId());
-                ResultSet rsImages = psImages.executeQuery();
-                if (rsImages.next()) {
-                    mh.setImages(new String[]{rsImages.getString("duongDan")});
+                HinhAnh754DAO haDAO = new HinhAnh754DAO();
+                ArrayList<HinhAnh754> images = haDAO.getAllHinhAnhByMaMatHang(mh);
+                if (images != null) {
+                    mh.setImages(images.toArray(new HinhAnh754[images.size()]));
                 }
                 list.add(mh);
             }
@@ -67,15 +66,12 @@ public class MatHang754DAO extends DAO {
                     mh.setNhaCC(ncc);
                 }
 
-                String queryImages = "SELECT duongDan FROM tblHinhAnh754 WHERE maMatHang = ?";
-                PreparedStatement psImages = con.prepareStatement(queryImages);
-                psImages.setInt(1, mhId);
-                ResultSet rsImages = psImages.executeQuery();
-                ArrayList<String> images = new ArrayList<String>();
-                while (rsImages.next()) {
-                    images.add(rsImages.getString("duongDan"));
+                HinhAnh754DAO haDAO = new HinhAnh754DAO();
+                ArrayList<HinhAnh754> images = haDAO.getAllHinhAnhByMaMatHang(mh);
+                if (images != null) {
+                    mh.setImages(images.toArray(new HinhAnh754[images.size()]));
                 }
-                mh.setImages(images.toArray(new String[images.size()]));
+
                 return mh;
             }
         } catch (Exception e) {

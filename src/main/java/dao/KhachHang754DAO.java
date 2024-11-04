@@ -10,15 +10,12 @@ public class KhachHang754DAO extends DAO {
         super();
     }
 
-    public boolean getKhachHangByMaKH(KhachHang754 kh) {
+    public boolean getKhachHangById(KhachHang754 kh) {
         // Code here
         try {
-            String query =  "SELECT nd.*\n" +
-                            "FROM tblNguoiDung754 nd\n" +
-                            "JOIN tblKhachHang754 kh ON nd.id = kh.idNguoiDung\n" +
-                            "WHERE kh.maKH = ?;\n";
+            String query =  "SELECT  * FROM tblNguoiDung754 WHERE id = ?";
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, kh.getMaKH());
+            ps.setInt(1, kh.getId());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 kh.setTen(rs.getString("ten"));

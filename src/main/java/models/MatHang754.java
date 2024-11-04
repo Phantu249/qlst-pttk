@@ -6,13 +6,13 @@ public class MatHang754 {
     private float gia;
     private int soLuong;
     private String moTa;
-    private String[] images;
+    private HinhAnh754[] images;
     private NhaCungCap754 NhaCC;
 
     public MatHang754() {
     }
 
-    public MatHang754(int id , String ten, int gia, int soLuong, String moTa, NhaCungCap754 NhaCC, String[] images) {
+    public MatHang754(int id , String ten, int gia, int soLuong, String moTa, NhaCungCap754 NhaCC, HinhAnh754[] images) {
         this.id = id;
         this.ten = ten;
         this.gia = gia;
@@ -64,11 +64,11 @@ public class MatHang754 {
         this.NhaCC = NhaCC;
     }
 
-    public String[] getImages() {
+    public HinhAnh754[] getImages() {
         return images;
     }
 
-    public void setImages(String[] images) {
+    public void setImages(HinhAnh754[] images) {
         this.images = images;
     }
 

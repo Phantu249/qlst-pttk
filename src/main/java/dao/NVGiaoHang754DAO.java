@@ -15,11 +15,7 @@ public class NVGiaoHang754DAO extends DAO {
         // Code here
         ArrayList<NVGiaoHang754> list = new ArrayList<NVGiaoHang754>();
         try {
-            String query =  "SELECT nd.*, gh.trangThai, gh.maNV\n" +
-                            "FROM tblNguoiDung754 nd\n" +
-                            "JOIN tblNhanVien754 nv ON nd.id = nv.idNguoiDung\n" +
-                            "JOIN tblNVGiaoHang754 gh ON nv.maNV = gh.maNV\n" +
-                            "WHERE gh.trangThai LIKE '%RANH%';\n";
+            String query =  "SELECT nd.*, nv.trangThai FROM tblNguoiDung754 nd JOIN tblNVGiaoHang754 nv ON nd.id = nv.maNV WHERE nv.trangThai = 'RANH'";
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -28,7 +24,6 @@ public class NVGiaoHang754DAO extends DAO {
                 nv.setTen(rs.getString("ten"));
                 nv.setSdt(rs.getString("sdt"));
                 nv.setTrangThai(rs.getString("trangThai"));
-                nv.setMaNV(rs.getInt("maNV"));
                 list.add(nv);
             }
         } catch (Exception e) {

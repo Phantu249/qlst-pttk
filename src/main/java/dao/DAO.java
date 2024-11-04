@@ -8,9 +8,8 @@ public class DAO {
 
     public DAO(){
         if(con == null){
-            // Thay đổi dbUrl để trỏ đến file SQLite
-            String dbUrl = "jdbc:sqlite:" + Objects.requireNonNull(getClass().getClassLoader().getResource("QLST.db")).getPath(); // Đường dẫn đến file SQLite
-            String dbClass = "org.sqlite.JDBC"; // Đảm bảo sử dụng driver cho SQLite
+            String dbUrl = "jdbc:sqlite:D:/Code/Project/QLST.db"; // Đường dẫn đến file SQLite
+            String dbClass = "org.sqlite.JDBC";
 
             try {
                 Class.forName(dbClass);

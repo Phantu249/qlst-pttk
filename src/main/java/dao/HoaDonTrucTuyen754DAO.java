@@ -27,8 +27,8 @@ public class HoaDonTrucTuyen754DAO extends DAO {
                 hd.setTongTien(rs.getFloat("tongGia"));
                 hd.setTrangThai(rs.getString("trangThai"));
                 KhachHang754 kh = new KhachHang754();
-                kh.setMaKH(rs.getInt("maKH"));
-                if (new KhachHang754DAO().getKhachHangByMaKH(kh)) {
+                kh.setId(rs.getInt("maKH"));
+                if (new KhachHang754DAO().getKhachHangById(kh)) {
                     hd.setNguoiDat(kh);
                 }
                 list.add(hd);
@@ -42,12 +42,7 @@ public class HoaDonTrucTuyen754DAO extends DAO {
     public boolean updateDonHang(int orderId, int idNVGiaoHang, String trangThai, NVKho754 nvk) {
         try {
             String query =  "UPDATE tblHoaDonTrucTuyen754 SET maNVGiaoHang = ?, trangThai = ?," +
-                            " ngayXuat = CURRENT_TIMESTAMP, maNVKho = " +
-                            "(SELECT tblNhanVien754.maNV " +
-                            "FROM tblNhanVien754 " +
-                            "INNER JOIN tblNguoiDung754 ON tblNhanVien754.idNguoiDung = tblNguoiDung754.id " +
-                            "WHERE tblNguoiDung754.id = ?) " +
-                            "WHERE id = ?";
+                            " ngayXuat = CURRENT_TIMESTAMP, maNVKho = ? WHERE id = ?";
 
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, idNVGiaoHang); // maNVGiaoHang

@@ -42,10 +42,10 @@
 %>
 <body>
 <%@ include file="header.jsp" %>
-<div class="container">
-    <header>
+<div class="dd-container">
+    <div class="dd-header">
         <h1>Duyệt Đơn và Xuất Kho</h1>
-    </header>
+    </div>
     <main>
         <section class="order-list">
             <h2>Danh Sách Đơn Chưa Xuất</h2>
@@ -71,8 +71,15 @@
                     <td><%=hd.getId()%></td>
                     <td><%=hd.getNguoiDat().getTen()%></td>
                     <td><%=hd.getNgayDat()%></td>
-                    <td><%=(double)hd.getTongTien()%> ₫</td>
-                    <td>Chưa xuất</td>
+                    <%@ page import="java.text.DecimalFormat" %>
+
+                    <%
+                        DecimalFormat formatter = new DecimalFormat("#,##0");
+                        String formattedAmount = formatter.format(hd.getTongTien());
+                    %>
+
+                    <td><%= formattedAmount %> ₫</td>
+                    <td>Chưa duyệt</td>
                     <td><button class="btn-process" onclick="showProcessForm(<%=hd.getId()%>)">Xử lý</button></td>
                 </tr>
                 <%}
@@ -96,7 +103,7 @@
                             if (listNV != null) {
                                 for (NVGiaoHang754 nv : listNV) {
                         %>
-                        <option value="<%=nv.getMaNV()%>"><%=nv.getTen()%></option>
+                        <option value="<%=nv.getId()%>"><%=nv.getTen()%></option>
                         <%
                             }
                         }
@@ -118,6 +125,18 @@
             </form>
         </section>
     </main>
+    <button onclick="history.back()" style="
+                margin-top: 10px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s ease;">
+        Quay lại
+    </button>
 </div>
 <script>
     function showProcessForm(orderId) {

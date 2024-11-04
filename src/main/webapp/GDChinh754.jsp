@@ -6,43 +6,20 @@
   Time: 10:12 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%--<%--%>
-<%--    NguoiDung754 user = (NguoiDung754) session.getAttribute("user");--%>
-
-<%--    if (user == null) {--%>
-<%--        response.sendRedirect("login");--%>
-<%--        return;--%>
-<%--    }--%>
-<%--%>--%>
 
 <%--<jsp:include page="KiemTraDangNhap754.jsp" />--%>
 <%@ include file="KiemTraDangNhap754.jsp" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="vi">
 <head>
-    <title>QLST</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Siêu Thị</title>
+    <link rel="stylesheet" href="css/gdchinh.css">
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<br>
-<%
-    if (user != null) {
-%>
-<h1>Chào mừng <%= user.getTen() %> đến với QLST</h1>
-<br>
-<%
-    }
-%>
-<button onclick="window.location.href='tim-kiem-mat-hang'">Tim kiem mat hang</button>
-<br/>
-<%
-    if (user != null && user.getVaitro().equals("KHO")) {
-%>
-<button onclick="window.location.href='duyet-don'">Duyet don</button>
-<%
-    }
-%>
-<br/>
+<h1 style="margin: auto; justify-self: center; text-align: center; padding-top: 2rem; font-weight: bold; font-size: xx-large"> Chào mừng <%=user.getTen()%> đến với hệ thống QLST</h1>
 </body>
 </html>

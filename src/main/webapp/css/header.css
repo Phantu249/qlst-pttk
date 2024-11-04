@@ -1,0 +1,123 @@
+:root {
+    --bg-color: #1a202c;
+    --text-color: #e2e8f0;
+    --accent-color: #4299e1;
+    --hover-color: #63b3ed;
+    --logout-hover-color: #f56565;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+.header {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.header {
+    background-color: #2d3748;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.header-logo-icon {
+    width: 2rem;
+    height: 2rem;
+    stroke: var(--accent-color);
+}
+
+.header-logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+.header-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.header-nav-item {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.header-nav-item:hover {
+    color: var(--hover-color);
+}
+
+.header-nav-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+.header-logout-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.header-logout-btn:hover {
+    color: var(--logout-hover-color);
+}
+
+.header-logout-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .header-nav span,
+    .header-logout-btn span {
+        display: none;
+    }
+
+    .header-nav-item,
+    .header-logout-btn {
+        justify-content: center;
+    }
+
+    .header-nav-icon,
+    .header-logout-icon {
+        margin-right: 0;
+    }
+}

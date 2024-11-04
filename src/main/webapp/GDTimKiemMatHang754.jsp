@@ -36,7 +36,7 @@
                         <%
                             if (mh.getImages() != null && mh.getImages().length != 0) {
                         %>
-                        <img src="<%=mh.getImages()[0]%>" alt="mat hang">
+                        <img src="<%=mh.getImages()[0].getPath()%>" alt="mat hang">
                         <%
                         } else {
                         %>
@@ -45,7 +45,13 @@
                             }
                         %>
                         <h3><%=mh.getTen()%></h3>
-                        <p class="price"><%=mh.getGia()%> ₫</p>
+                        <%@ page import="java.text.DecimalFormat" %>
+
+                        <%
+                            DecimalFormat formatter = new DecimalFormat("#,##0");
+                            String formattedAmount = formatter.format(mh.getGia());
+                        %>
+                        <p class="price"><%=formattedAmount%> ₫</p>
                         <button class="view-details" onclick="window.location.href='mat-hang?id=<%= mh.getId() %>'" >Xem chi tiết</button>
                     <%--                        <button class="view-details" ><a href="mat-hang?id=<%= mh.getId() %>">Xem chi tiết</a>--%>
                     </div>

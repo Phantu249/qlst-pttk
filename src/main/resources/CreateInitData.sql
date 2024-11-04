@@ -5,44 +5,23 @@
 BEGIN TRANSACTION;
 -- Tạo tài khoản cho nhân viên quản lý
 INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
-VALUES ('Nguyễn Văn A', 'nvA', 'password123', '1985-01-01 00:00:00', '456 Đường DEF, Quận 1, TP.HCM', 'nva@example.com', '0123456789', 'QUAN_lY');
-
-INSERT INTO tblNhanVien754 (idNguoiDung)
-VALUES (last_insert_rowid());
+VALUES ('Nguyễn Văn A', 'quanly', '1', '1985-01-01 00:00:00', '456 Đường DEF, Quận 1, TP.HCM', 'nva@example.com', '0123456789', 'QUAN_lY');
 
 -- Tạo tài khoản cho nhân viên kho
 INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
-VALUES ('Trần Thị B', 'nvB', 'password123', '1990-02-02 00:00:00', '789 Đường GHI, Quận 2, TP.HCM', 'nvb@example.com', '0987654321', 'KHO');
-
-INSERT INTO tblNhanVien754 (idNguoiDung)
-VALUES (last_insert_rowid());
+VALUES ('Trần Thị B', 'kho', '1', '1990-02-02 00:00:00', '789 Đường GHI, Quận 2, TP.HCM', 'nvb@example.com', '0987654321', 'KHO');
 
 -- Tạo tài khoản cho nhân viên bán hàng
 INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
-VALUES ('Lê Văn C', 'nvC', 'password123', '1995-03-03 00:00:00', '321 Đường JKL, Quận 3, TP.HCM', 'nvc@example.com', '0112233445', 'BAN_HANG');
-
-INSERT INTO tblNhanVien754 (idNguoiDung)
-VALUES (last_insert_rowid());
+VALUES ('Lê Văn C', 'banhang', '1', '1995-03-03 00:00:00', '321 Đường JKL, Quận 3, TP.HCM', 'nvc@example.com', '0112233445', 'BAN_HANG');
 
 -- Tạo tài khoản cho nhân viên giao hàng
 INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
-VALUES ('Phạm Văn D', 'nvD', 'password123', '1992-04-04 00:00:00', '654 Đường MNO, Quận 4, TP.HCM', 'nvd@example.com', '0223344556', 'GIAO_HANG');
-
-INSERT INTO tblNhanVien754 (idNguoiDung)
-VALUES (last_insert_rowid());
-
-INSERT INTO tblNVGiaoHang754 (maNV, trangThai)
-VALUES (last_insert_rowid(), 'RANH');
+VALUES ('Phạm Văn D', 'giaohang', '1', '1992-04-04 00:00:00', '654 Đường MNO, Quận 4, TP.HCM', 'nvd@example.com', '0223344556', 'GIAO_HANG');
 
 -- Tạo tài khoản cho nhân viên giao hàng
 INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
-VALUES ('Nguyễn Văn E', 'nvE', 'password123', '1993-05-05 00:00:00', '987 Đường PQR, Quận 5, TP.HCM', '@example.com', '0334455667', 'GIAO_HANG');
-
-INSERT INTO tblNhanVien754 (idNguoiDung)
-VALUES (last_insert_rowid());
-
-INSERT INTO tblNVGiaoHang754 (maNV, trangThai)
-VALUES (last_insert_rowid(), 'RANH');
+VALUES ('Nguyễn Văn E', 'giaohang2', '1', '1993-05-05 00:00:00', '987 Đường PQR, Quận 5, TP.HCM', '@example.com', '0334455667', 'GIAO_HANG');
 
 -- Tạo tài khoản cho khách hàng
 INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
@@ -76,22 +55,42 @@ VALUES ('Máy giặt LG 8kg', 'Máy giặt cửa trước', 8000000.0, (SELECT i
 COMMIT;
 
 BEGIN TRANSACTION ;
-INSERT INTO tblHinhAnh754 (maMatHang, duongDan)
+INSERT INTO tblHinhAnh754 (maMatHang, path)
 VALUES (1, 'https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Apro/Apro_product_33194/google-tivi-xia_main_747_1020.png.webp');
 
-INSERT INTO tblHinhAnh754 (maMatHang, duongDan)
+INSERT INTO tblHinhAnh754 (maMatHang, path)
 VALUES (1, 'https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Apro/Apro_product_33194/google-tivi-xia_multi_0_496_1020.png.webp');
 
-INSERT INTO tblHinhAnh754 (maMatHang, duongDan)
+INSERT INTO tblHinhAnh754 (maMatHang, path)
 VALUES (1, 'https://cdn11.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture//Apro/Apro_product_33194/google-tivi-xia_multi_1_536_1020.png.webp');
 
+INSERT INTO tblHinhAnh754 (maMatHang, path)
+VALUES (2, 'https://cdn.tgdd.vn/Products/Images/1943/236996/samsung-rf48a4010m9-sv-1-1-700x467.jpg');
+
+INSERT INTO tblHinhAnh754 (maMatHang, path)
+VALUES (2, 'https://cdn.tgdd.vn/Products/Images/1943/236996/samsung-rf48a4010m9-sv-2-1-700x467.jpg');
+
+INSERT INTO tblHinhAnh754 (maMatHang, path)
+VALUES (2, 'https://cdn.tgdd.vn/Products/Images/1943/236996/samsung-rf48a4010m9-sv-5-1-700x467.jpg');
+
+INSERT INTO tblHinhAnh754 (maMatHang, path)
+VALUES (3, 'https://cdn.tgdd.vn/Products/Images/1944/316766/toshiba-inverter-10-kg-tw-t21bu110uwv-mg-1-1-700x467.jpg');
+
+INSERT INTO tblHinhAnh754 (maMatHang, path)
+VALUES (3, 'https://cdn.tgdd.vn/Products/Images/1944/316766/toshiba-inverter-10-kg-tw-t21bu110uwv-mg-2-1-700x467.jpg');
+
+INSERT INTO tblHinhAnh754 (maMatHang, path)
+VALUES (3, 'https://cdn.tgdd.vn/Products/Images/1944/316766/toshiba-inverter-10-kg-tw-t21bu110uwv-mg-3-1-700x467.jpg');
+
 COMMIT ;
+
 -- Transaction để tạo hóa đơn nhập và chi tiết hóa đơn nhập
 -- Tạo hóa đơn nhập
 INSERT INTO tblHoaDonNhap754 (maNV)
-VALUES ((SELECT tblNhanVien754.maNV FROM tblNhanVien754 WHERE (SELECT tblNguoiDung754.vaiTro FROM tblNguoiDung754 WHERE tblNguoiDung754.id = tblNhanVien754.idNguoiDung) = 'KHO'));
+VALUES ((SELECT tblNguoiDung754.id FROM tblNguoiDung754 WHERE tblNguoiDung754.vaiTro = 'KHO'));
 
 
+BEGIN TRANSACTION ;
 -- Tạo chi tiết hóa đơn nhập
 INSERT INTO tblChiTietHangNhap754 (soluong, gia, idHoaDon, idMatHang)
 VALUES (10, 4000000.0, 1, (SELECT id FROM tblMatHang754 WHERE ten = 'Tivi LED 50 inch'));
@@ -102,6 +101,7 @@ VALUES (5, 5000000.0, 1, (SELECT id FROM tblMatHang754 WHERE ten = 'Tủ lạnh 
 INSERT INTO tblChiTietHangNhap754 (soluong, gia, idHoaDon, idMatHang)
 VALUES (8, 6000000.0, 1, (SELECT id FROM tblMatHang754 WHERE ten = 'Máy giặt LG 8kg'));
 
+COMMIT ;
 
 -- DELETE FROM tblChiTietHangTrucTuyen754 WHERE id > 0; -- Xóa tất cả bản ghi
 -- DELETE FROM sqlite_sequence WHERE name='tblChiTietHangTrucTuyen754'; -- Đặt lại ID tự động tăng về 1
@@ -110,7 +110,7 @@ VALUES (8, 6000000.0, 1, (SELECT id FROM tblMatHang754 WHERE ten = 'Máy giặt 
 -- Tao hoa don truc tuyen
 BEGIN TRANSACTION ;
 INSERT INTO tblHoaDonTrucTuyen754 (maKH)
-VALUES ((SELECT tblKhachHang754.maKH FROM tblKhachHang754 WHERE (SELECT tblNguoiDung754.vaiTro FROM tblNguoiDung754 WHERE tblNguoiDung754.id = tblKhachHang754.idNguoiDung) = 'KHACH_HANG'));
+VALUES ((SELECT tblNguoiDung754.id FROM tblNguoiDung754 WHERE tblNguoiDung754.vaiTro ='KHACH_HANG'));
 
 INSERT INTO tblChiTietHangTrucTuyen754 (soluong, gia, idHoaDon, idMatHang)
 VALUES (2, 5000000.0, last_insert_rowid(), (SELECT id FROM tblMatHang754 WHERE ten = 'Tivi LED 50 inch'));
@@ -120,7 +120,7 @@ COMMIT ;
 -- Tao hoa don truc tuyen
 BEGIN TRANSACTION ;
 INSERT INTO tblHoaDonTrucTuyen754 (maKH)
-VALUES ((SELECT tblKhachHang754.maKH FROM tblKhachHang754 WHERE (SELECT tblNguoiDung754.username FROM tblNguoiDung754 WHERE tblNguoiDung754.id = tblKhachHang754.idNguoiDung) = 'huongnguyen'));
+VALUES ((SELECT tblNguoiDung754.id FROM tblNguoiDung754 WHERE tblNguoiDung754.vaiTro ='KHACH_HANG' AND tblNguoiDung754.username = 'huongnguyen'));
 
 INSERT INTO tblChiTietHangTrucTuyen754 (soluong, gia, idHoaDon, idMatHang)
 VALUES (1, 6000000.0, last_insert_rowid(), (SELECT id FROM tblMatHang754 WHERE ten = 'Tủ lạnh Samsung 500L'));

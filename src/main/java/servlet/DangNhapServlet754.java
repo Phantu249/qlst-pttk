@@ -12,7 +12,7 @@ import models.NguoiDung754;
 import java.io.IOException;
 
 @WebServlet("/login")
-public class LoginServlet754 extends HttpServlet {
+public class DangNhapServlet754 extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        if (request.getSession().getAttribute("user") != null) {

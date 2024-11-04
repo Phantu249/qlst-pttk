@@ -42,32 +42,7 @@ BEGIN
     WHERE id = OLD.idHoaDon;
 END;
 
-
--- Trigger tự động giảm số lượng mặt hàng khi có hóa đơn bán trực tiếp
-CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnBanTrucTiep
-    AFTER INSERT ON tblChiTietHangTrucTiep754
-    FOR EACH ROW
-BEGIN
-    UPDATE tblMatHang754
-    SET soLuong = soLuong - NEW.soLuong
-    WHERE id = NEW.idMatHang;
-END;
-
--- Trigger tự động tăng số lượng mặt hàng khi xóa hóa đơn bán trực tiếp
-CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnDeleteBanTrucTiep
-    AFTER DELETE ON tblHoaDonTrucTiep754
-    FOR EACH ROW
-BEGIN
-    UPDATE tblMatHang754
-    SET soLuong = soLuong + (SELECT soLuong
-                             FROM tblChiTietHangTrucTiep754
-                             WHERE idHoaDon = OLD.id)
-    WHERE id = (SELECT idMatHang
-                FROM tblChiTietHangTrucTiep754
-                WHERE idHoaDon = OLD.id);
-END;
-
--- Trigger tự động giảm số lượng mặt hàng khi có hóa đơn bán trực tuyến
+-- Trigger tự động giảm số lượng mặt hàng khi có chi tiết hóa đơn bán trực tuyến
 CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnBanTrucTuyen
     AFTER INSERT ON tblChiTietHangTrucTuyen754
     FOR EACH ROW
@@ -77,18 +52,23 @@ BEGIN
     WHERE id = NEW.idMatHang;
 END;
 
--- Trigger tự động tăng số lượng mặt hàng khi xóa hóa đơn bán trực tuyến
+-- Trigger tự động tăng số lượng mặt hàng khi xóa chi tiết hóa đơn bán trực tuyến
 CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnDeleteBanTrucTuyen
-    AFTER DELETE ON tblHoaDonTrucTuyen754
+    AFTER DELETE ON tblChiTietHangTrucTuyen754
     FOR EACH ROW
 BEGIN
     UPDATE tblMatHang754
-    SET soLuong = soLuong + (SELECT soLuong
-                             FROM tblChiTietHangTrucTuyen754
-                             WHERE idHoaDon = OLD.id)
-    WHERE id = (SELECT idMatHang
-                FROM tblChiTietHangTrucTuyen754
-                WHERE idHoaDon = OLD.id);
+    SET soLuong = soLuong + OLD.soLuong
+    WHERE id = OLD.idMatHang;
+END;
+
+-- Trigger tự động xóa chi tiết hóa đơn bán trực tuyến khi hóa đơn bán trực tuyến bị xóa
+CREATE TRIGGER IF NOT EXISTS trg_DeleteCTHDTTOnDeleteHDTT
+    AFTER DELETE ON tblHoaDonTrucTuyen754
+    FOR EACH ROW
+BEGIN
+    DELETE FROM tblChiTietHangTrucTuyen754
+    WHERE idHoaDon = OLD.id;
 END;
 
 -- Trigger tự động cập nhật tổng giá của hóa đơn bán trực tuyến khi có chi tiết hóa đơn bán trực tuyến mới
@@ -115,9 +95,11 @@ BEGIN
     WHERE id = OLD.id;
 END;
 
+
+
 -- Trigger tự động cập nhật trạng thái nhân viên giao hàng khi có hóa đơn bán trực tuyến
 CREATE TRIGGER IF NOT EXISTS trg_UpdateTrangThaiNhanVienGiaoHang
-    AFTER INSERT ON tblHoaDonTrucTuyen754
+    AFTER UPDATE ON tblHoaDonTrucTuyen754
     FOR EACH ROW
     WHEN NEW.trangThai = 'DA_DUYET'
 BEGIN
@@ -126,23 +108,59 @@ BEGIN
     WHERE maNV = NEW.maNVGiaoHang;
 END;
 
-
---Trigger tự động xóa chi tiết hóa đơn khi hóa đơn bị xóa
-CREATE TRIGGER IF NOT EXISTS trg_DeleteCTHDOnDeleteHD
-    AFTER DELETE ON tblHoaDonTrucTiep754
+-- Trigger tự động cập nhật trạng thái nhân viên giao hàng khi hóa đơn bán trực tuyến bị xóa
+CREATE TRIGGER IF NOT EXISTS trg_UpdateTrangThaiNhanVienGiaoHangOnDelete
+    AFTER DELETE ON tblHoaDonTrucTuyen754
     FOR EACH ROW
+    WHEN OLD.trangThai = 'DA_DUYET'
 BEGIN
-    DELETE FROM tblChiTietHangTrucTiep754
-    WHERE idHoaDon = OLD.id;
+    UPDATE tblNVGiaoHang754
+    SET trangThai = 'RANH'
+    WHERE maNV = OLD.maNVGiaoHang;
 END;
 
--- Trigger tự động tạo khách hàng
-CREATE TRIGGER IF NOT EXISTS trg_CreateKhachHang
+
+-- Trigger tự động tạo nhân viên giao hàng
+CREATE TRIGGER IF NOT EXISTS trg_CreateNVGiaoHang
     AFTER INSERT ON tblNguoiDung754
     FOR EACH ROW
-    WHEN NEW.vaiTro = 'KHACH_HANG'
+    WHEN NEW.vaiTro = 'GIAO_HANG'
 BEGIN
-    INSERT INTO tblKhachHang754 (idNguoiDung)
-    VALUES (NEW.id);
+    INSERT INTO tblNVGiaoHang754 (maNV, trangThai)
+    VALUES (NEW.id, 'RANH');
 END;
+
+
+-- --Trigger tự động xóa chi tiết hóa đơn khi hóa đơn bị xóa
+-- CREATE TRIGGER IF NOT EXISTS trg_DeleteCTHDOnDeleteHD
+--     AFTER DELETE ON tblHoaDonTrucTiep754
+--     FOR EACH ROW
+-- BEGIN
+--     DELETE FROM tblChiTietHangTrucTiep754
+--     WHERE idHoaDon = OLD.id;
+-- END;
+
+-- -- Trigger tự động giảm số lượng mặt hàng khi có hóa đơn bán trực tiếp
+-- CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnBanTrucTiep
+--     AFTER INSERT ON tblChiTietHangTrucTiep754
+--     FOR EACH ROW
+-- BEGIN
+--     UPDATE tblMatHang754
+--     SET soLuong = soLuong - NEW.soLuong
+--     WHERE id = NEW.idMatHang;
+-- END;
+--
+-- -- Trigger tự động tăng số lượng mặt hàng khi xóa hóa đơn bán trực tiếp
+-- CREATE TRIGGER IF NOT EXISTS trg_UpdateStockOnDeleteBanTrucTiep
+--     AFTER DELETE ON tblHoaDonTrucTiep754
+--     FOR EACH ROW
+-- BEGIN
+--     UPDATE tblMatHang754
+--     SET soLuong = soLuong + (SELECT soLuong
+--                              FROM tblChiTietHangTrucTiep754
+--                              WHERE idHoaDon = OLD.id)
+--     WHERE id = (SELECT idMatHang
+--                 FROM tblChiTietHangTrucTiep754
+--                 WHERE idHoaDon = OLD.id);
+-- END;
 
