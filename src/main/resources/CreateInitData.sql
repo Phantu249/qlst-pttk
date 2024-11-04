@@ -23,6 +23,11 @@ VALUES ('Phạm Văn D', 'giaohang', '1', '1992-04-04 00:00:00', '654 Đường 
 INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
 VALUES ('Nguyễn Văn E', 'giaohang2', '1', '1993-05-05 00:00:00', '987 Đường PQR, Quận 5, TP.HCM', '@example.com', '0334455667', 'GIAO_HANG');
 
+-- Tạo tài khoản cho nhân viên giao hàng
+INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
+VALUES ('Nguyễn Văn F', 'giaohang3', '1', '1993-05-05 00:00:00', '987 Đường PQR, Quận 5, TP.HCM', '@example.com', '0334455667', 'GIAO_HANG');
+
+
 -- Tạo tài khoản cho khách hàng
 INSERT INTO tblNguoiDung754 (ten, username, password, ngaySinh, diaChi, email, sdt, vaiTro)
 VALUES ('Phan Văn Tú', 'tuphan', 'tuphan', '2003-09-24 00:00:00', 'Song Liễu, Thuận Thành, Bắc Ninh', 'pvtu@example.com', '0999999999', 'KHACH_HANG');
@@ -93,13 +98,13 @@ VALUES ((SELECT tblNguoiDung754.id FROM tblNguoiDung754 WHERE tblNguoiDung754.va
 BEGIN TRANSACTION ;
 -- Tạo chi tiết hóa đơn nhập
 INSERT INTO tblChiTietHangNhap754 (soluong, gia, idHoaDon, idMatHang)
-VALUES (10, 4000000.0, 1, (SELECT id FROM tblMatHang754 WHERE ten = 'Tivi LED 50 inch'));
+VALUES (50, 4000000.0, 2, (SELECT id FROM tblMatHang754 WHERE ten = 'Tivi LED 50 inch'));
 
 INSERT INTO tblChiTietHangNhap754 (soluong, gia, idHoaDon, idMatHang)
-VALUES (5, 5000000.0, 1, (SELECT id FROM tblMatHang754 WHERE ten = 'Tủ lạnh Samsung 500L'));
+VALUES (50, 5000000.0, 2, (SELECT id FROM tblMatHang754 WHERE ten = 'Tủ lạnh Samsung 500L'));
 
 INSERT INTO tblChiTietHangNhap754 (soluong, gia, idHoaDon, idMatHang)
-VALUES (8, 6000000.0, 1, (SELECT id FROM tblMatHang754 WHERE ten = 'Máy giặt LG 8kg'));
+VALUES (50, 6000000.0, 2, (SELECT id FROM tblMatHang754 WHERE ten = 'Máy giặt LG 8kg'));
 
 COMMIT ;
 
@@ -125,5 +130,11 @@ VALUES ((SELECT tblNguoiDung754.id FROM tblNguoiDung754 WHERE tblNguoiDung754.va
 INSERT INTO tblChiTietHangTrucTuyen754 (soluong, gia, idHoaDon, idMatHang)
 VALUES (1, 6000000.0, last_insert_rowid(), (SELECT id FROM tblMatHang754 WHERE ten = 'Tủ lạnh Samsung 500L'));
 
+COMMIT ;
+
+BEGIN TRANSACTION;
+UPDATE tblNVGiaoHang754
+SET trangThai = 'RANH'
+WHERE maNV > 0;
 COMMIT ;
 

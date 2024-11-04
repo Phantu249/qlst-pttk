@@ -79,6 +79,7 @@
         </div>
     </main>
     <button onclick="history.back()" style="
+                float: right;
                 margin-top: 10px;
                 background-color: #4CAF50;
                 color: white;

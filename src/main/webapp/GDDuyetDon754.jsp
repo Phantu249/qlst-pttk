@@ -80,7 +80,7 @@
 
                     <td><%= formattedAmount %> ₫</td>
                     <td>Chưa duyệt</td>
-                    <td><button class="btn-process" onclick="showProcessForm(<%=hd.getId()%>)">Xử lý</button></td>
+                    <td><button class="btn-process" onclick="window.location.href='chon-nv-trang-thai?idHD=<%=hd.getId()%>'">Xử lý</button></td>
                 </tr>
                 <%}
                     }
@@ -88,44 +88,9 @@
                 </tbody>
             </table>
         </section>
-        <section id="process-form" class="hidden">
-            <h2>Xử Lý Đơn Hàng <span id="order-id"></span></h2>
-            <form id="order-process-form" action="duyet-don" method="post">
-<%--            Thêm input này để gửi mã đơn hàng--%>
-                <input type="hidden" name="orderId" id="order-id-input">
-                <div class="form-group">
-                    <label for="delivery-staff">Chọn Nhân Viên Giao Hàng:</label>
-                    <select id="delivery-staff" name="idNVGiaoHang" required>
-                        <option value="">-- Chọn nhân viên --</option>
-                        <%
-                            ArrayList<NVGiaoHang754> listNV = null;
-                            listNV = (ArrayList<NVGiaoHang754>) request.getAttribute("listNV");
-                            if (listNV != null) {
-                                for (NVGiaoHang754 nv : listNV) {
-                        %>
-                        <option value="<%=nv.getId()%>"><%=nv.getTen()%></option>
-                        <%
-                            }
-                        }
-                        %>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="status">Cập Nhật Trạng Thái:</label>
-                    <select id="status" name="trangThai" required>
-                        <option value="">-- Chọn trạng thái --</option>
-                        <option value="DA_DUYET">Đã duyệt</option>
-                        <option value="CHUA_DUYET">Chưa duyệt</option>
-                    </select>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn-submit">Cập Nhật & In Hóa Đơn</button>
-                    <button type="button" class="btn-cancel" onclick="hideProcessForm()">Hủy</button>
-                </div>
-            </form>
-        </section>
     </main>
     <button onclick="history.back()" style="
+                float: right;
                 margin-top: 10px;
                 background-color: #4CAF50;
                 color: white;
@@ -138,22 +103,5 @@
         Quay lại
     </button>
 </div>
-<script>
-    function showProcessForm(orderId) {
-        document.getElementById("order-id").textContent = orderId;
-        document.getElementById("order-id-input").value = orderId;
-        document.getElementById("process-form").classList.remove("hidden");
-    }
-
-    function hideProcessForm() {
-        document.getElementById('process-form').classList.add('hidden');
-    }
-
-    // document.getElementById('order-process-form').addEventListener('submit', function(e) {
-    //     e.preventDefault();
-    //     alert('Đơn hàng đã được cập nhật và in hóa đơn.');
-    //     hideProcessForm();
-    // });
-</script>
 </body>
 </html>

@@ -1,8 +1,6 @@
 package dao;
 
-import models.HoaDonTrucTuyen754;
-import models.KhachHang754;
-import models.NVKho754;
+import models.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,4 +55,39 @@ public class HoaDonTrucTuyen754DAO extends DAO {
         return false;
     }
 
+    public boolean getHoaDonById(HoaDonTrucTuyen754 hd) {
+        try {
+            String query = "SELECT * FROM tblHoaDonTrucTuyen754 WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, hd.getId());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                hd.setNgayXuat(rs.getDate("ngayXuat"));
+                NVKho754 nvk = new NVKho754();
+                nvk.setId(rs.getInt("maNVKho"));
+                if (new NVKho754DAO().getNhanVienById(nvk)) {
+                    hd.setNguoiDuyetDon(nvk);
+                }
+
+                NVGiaoHang754 nvgh = new NVGiaoHang754();
+                nvgh.setId(rs.getInt("maNVGiaoHang"));
+                if (new NVGiaoHang754DAO().getNhanVienById(nvgh)) {
+                    hd.setNVGiaoHang(nvgh);
+                }
+
+                hd.setNgayDat(rs.getDate("ngayDat"));
+                hd.setTongTien(rs.getFloat("tongGia"));
+                hd.setTrangThai(rs.getString("trangThai"));
+                KhachHang754 kh = new KhachHang754();
+                kh.setId(rs.getInt("maKH"));
+                if (new KhachHang754DAO().getKhachHangById(kh)) {
+                    hd.setNguoiDat(kh);
+                }
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

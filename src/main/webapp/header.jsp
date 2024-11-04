@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="css/header.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<%--<%@ include file="KiemTraDangNhap754.jsp"%>--%>
 
 <header class="header">
     <div class="header-container">

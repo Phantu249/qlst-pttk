@@ -32,4 +32,25 @@ public class NVGiaoHang754DAO extends DAO {
     }
         return list;
     }
+
+    public boolean getNhanVienById(NVGiaoHang754 nv) {
+        try {
+            String query = "SELECT * FROM tblNguoiDung754 WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, nv.getId());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                nv.setTen(rs.getString("ten"));
+                nv.setDiaChi(rs.getString("diaChi"));
+                nv.setSdt(rs.getString("sdt"));
+                nv.setEmail(rs.getString("email"));
+                nv.setNgaySinh(rs.getDate("ngaySinh"));
+                nv.setVaiTro(rs.getString("vaiTro"));
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

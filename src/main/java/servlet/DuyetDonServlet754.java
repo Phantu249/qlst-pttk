@@ -26,34 +26,6 @@ public class DuyetDonServlet754 extends HttpServlet {
             request.setAttribute("errorMessage", "Không có đơn hàng nào cần duyệt.");
         }
 
-        NVGiaoHang754DAO nvDAO = new NVGiaoHang754DAO();
-        ArrayList<NVGiaoHang754> listNV = nvDAO.getNVGiaoHangRanh();
-        if (listNV != null && !listNV.isEmpty()) {
-            request.setAttribute("listNV", listNV);
-        }
-
         request.getRequestDispatcher("GDDuyetDon754.jsp").forward(request, response);
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int orderId = Integer.parseInt(request.getParameter("orderId"));
-        int idNVGiaoHang = Integer.parseInt(request.getParameter("idNVGiaoHang"));
-        String trangThai = request.getParameter("trangThai");
-        NVKho754 nvk = new NVKho754();
-        NguoiDung754 user = (NguoiDung754) request.getSession().getAttribute("user");
-        if (user == null) {
-            request.setAttribute("errorMessage", "Vui lòng đăng nhập.");
-            request.getRequestDispatcher("GDDangNhap754.jsp").forward(request, response);
-            return;
-        }
-        nvk.setId(user.getId());
-
-        HoaDonTrucTuyen754DAO hdDAO = new HoaDonTrucTuyen754DAO();
-        if (hdDAO.updateDonHang(orderId, idNVGiaoHang, trangThai, nvk)) {
-            response.sendRedirect("duyet-don");
-        } else {
-            request.setAttribute("errorMessage", "Duyệt đơn hàng thất bại.");
-            request.getRequestDispatcher("GDDuyetDon754.jsp").forward(request, response);
-        }
     }
 }
