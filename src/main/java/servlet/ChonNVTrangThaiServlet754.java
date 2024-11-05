@@ -21,7 +21,7 @@ public class ChonNVTrangThaiServlet754 extends HttpServlet {
         String idHDStr = request.getParameter("idHD");
         if (idHDStr == null) {
             request.setAttribute("errorMessage", "Không tìm thấy hóa đơn.");
-            request.getRequestDispatcher("GDDuyetDon754.jsp").forward(request, response);
+            request.getRequestDispatcher("view/nhanvien/GDDuyetDon754.jsp").forward(request, response);
             return;
         }
         int idHD = Integer.parseInt(idHDStr);
@@ -36,7 +36,7 @@ public class ChonNVTrangThaiServlet754 extends HttpServlet {
             request.setAttribute("listNV", listNV);
         }
 
-        request.getRequestDispatcher("GDChonNVTrangThai754.jsp").forward(request, response);
+        request.getRequestDispatcher("view/nhanvien/GDChonNVTrangThai754.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +47,7 @@ public class ChonNVTrangThaiServlet754 extends HttpServlet {
         NguoiDung754 user = (NguoiDung754) request.getSession().getAttribute("user");
         if (user == null) {
             request.setAttribute("errorMessage", "Vui lòng đăng nhập.");
-            request.getRequestDispatcher("GDDangNhap754.jsp").forward(request, response);
+            request.getRequestDispatcher("view/nguoidung/GDDangNhap754.jsp").forward(request, response);
             return;
         }
         nvk.setId(user.getId());
@@ -55,13 +55,13 @@ public class ChonNVTrangThaiServlet754 extends HttpServlet {
         HoaDonTrucTuyen754DAO hdDAO = new HoaDonTrucTuyen754DAO();
         if (hdDAO.updateDonHang(orderId, idNVGiaoHang, trangThai, nvk)) {
             if (trangThai.equals("DA_DUYET")) {
-                response.sendRedirect("in-xuat-kho?idHD=" + orderId);
+                response.sendRedirect("/in-xuat-kho?idHD=" + orderId);
             } else {
-                response.sendRedirect("duyet-don");
+                response.sendRedirect("/duyet-don");
             }
         } else {
             request.setAttribute("errorMessage", "Duyệt đơn hàng thất bại.");
-            request.getRequestDispatcher("GDDuyetDon754.jsp").forward(request, response);
+            request.getRequestDispatcher("view/nhanvien/GDDuyetDon754.jsp").forward(request, response);
         }
     }
 }

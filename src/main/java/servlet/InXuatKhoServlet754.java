@@ -19,7 +19,7 @@ public class InXuatKhoServlet754 extends HttpServlet {
         String idHDStr = request.getParameter("idHD");
         if (idHDStr == null) {
             request.setAttribute("errorMessage", "Không tìm thấy hóa đơn.");
-            request.getRequestDispatcher("GDDuyetDon754.jsp").forward(request, response);
+            request.getRequestDispatcher("view/nhanvien/GDDuyetDon754.jsp").forward(request, response);
             return;
         }
         int idHD = Integer.parseInt(idHDStr);
@@ -33,10 +33,10 @@ public class InXuatKhoServlet754 extends HttpServlet {
             if (listCTH != null && !listCTH.isEmpty()) {
                 request.setAttribute("listCTH", listCTH);
             }
-            request.getRequestDispatcher("GDInXuatKho754.jsp").forward(request, response);
+            request.getRequestDispatcher("view/nhanvien/GDInXuatKho754.jsp").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Không tìm thấy hóa đơn.");
-            request.getRequestDispatcher("GDDuyetDon754.jsp").forward(request, response);
+            request.getRequestDispatcher("view/nhanvien/GDDuyetDon754.jsp").forward(request, response);
         }
     }
 }

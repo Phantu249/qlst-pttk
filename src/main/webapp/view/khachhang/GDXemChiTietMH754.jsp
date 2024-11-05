@@ -6,13 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="KiemTraDangNhap754.jsp"%>
+<%@ include file="../nguoidung/KiemTraDangNhap754.jsp"%>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
-    <link rel="stylesheet" href="css/product-detail.css">
+    <link rel="stylesheet" href="../../css/product-detail.css">
 </head>
 <%
     // Hiển thị thông tin sản phẩm
@@ -23,7 +23,7 @@
     }
 %>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../nguoidung/header.jsp" %>
 <div class="container">
     <header>
         <h1>Chi tiết sản phẩm</h1>

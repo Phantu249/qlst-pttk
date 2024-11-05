@@ -13,7 +13,7 @@
     NguoiDung754 user = (NguoiDung754) session.getAttribute("user");
 
     if (user == null) {
-        response.sendRedirect("login");
+        response.sendRedirect("/login");
         return;
     }
 
@@ -27,13 +27,13 @@
     <title>Chọn NV & Trạng Thái</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/order-processing.css">
+    <link rel="stylesheet" href="../../css/order-processing.css">
 </head>
-<%@ include file="header.jsp" %>
+<%@ include file="../nguoidung/header.jsp" %>
 <%
     HoaDonTrucTuyen754 hd = (HoaDonTrucTuyen754) request.getAttribute("hd");
     if (hd == null) {
-        response.sendRedirect("duyet-don");
+        response.sendRedirect("/duyet-don");
         return;
     }
 %>

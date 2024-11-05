@@ -5,6 +5,6 @@
          version="5.0">
     <display-name>QLST</display-name>
     <welcome-file-list>
-        <welcome-file>GDChinh754.jsp</welcome-file>
+        <welcome-file>view/nguoidung/GDChinh754.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -7,17 +7,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="KiemTraDangNhap754.jsp"%>
+<%@ include file="../nguoidung/KiemTraDangNhap754.jsp"%>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tìm kiếm sản phẩm</title>
-    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="../../css/search.css">
 </head>
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../nguoidung/header.jsp" %>
 <div class="container">
     <h1>Tìm kiếm sản phẩm</h1>
     <form id="search-form" action="tim-kiem-mat-hang" method="get">

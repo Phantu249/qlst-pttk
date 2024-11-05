@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="../../css/header.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 <header class="header">
@@ -30,7 +30,10 @@
                     </svg>
                     <span>Trang chủ</span>
                 </a>
-                <a href="tim-kiem-mat-hang" class="header-nav-item">
+                <%
+                    if (user != null && user.getVaitro().equals("KHACH_HANG")) {
+                %>
+                <a href="/tim-kiem-mat-hang" class="header-nav-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="header-nav-icon">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -38,9 +41,12 @@
                     <span>Tìm kiếm mặt hàng</span>
                 </a>
                 <%
+                    }
+                %>
+                <%
                     if (user != null && user.getVaitro().equals("KHO")) {
                 %>
-                <a href="duyet-don" class="header-nav-item">
+                <a href="/duyet-don" class="header-nav-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="header-nav-icon">
                         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                         <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
@@ -54,7 +60,7 @@
                     }
                 %>
             </nav>
-            <button class="header-logout-btn" onclick="window.location.href='logout'">
+            <button class="header-logout-btn" onclick="window.location.href='/logout'">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="header-logout-icon">
                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                     <polyline points="16 17 21 12 16 7"></polyline>

@@ -14,7 +14,7 @@
     NguoiDung754 user = (NguoiDung754) session.getAttribute("user");
 
     if (user == null) {
-        response.sendRedirect("login");
+        response.sendRedirect("/login");
         return;
     }
 
@@ -28,7 +28,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duyệt Đơn và Xuất Kho</title>
-    <link rel="stylesheet" href="css/order-processing.css">
+    <link rel="stylesheet" href="../../css/order-processing.css">
 </head>
 <%
     String errorMessage = (String) request.getAttribute("errorMessage");
@@ -41,7 +41,7 @@
     }
 %>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../nguoidung/header.jsp" %>
 <div class="dd-container">
     <div class="dd-header">
         <h1>Duyệt Đơn và Xuất Kho</h1>

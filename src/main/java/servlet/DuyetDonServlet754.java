@@ -8,9 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.annotation.WebServlet;
 import models.HoaDonTrucTuyen754;
-import models.NVGiaoHang754;
-import models.NVKho754;
-import models.NguoiDung754;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,6 +24,6 @@ public class DuyetDonServlet754 extends HttpServlet {
             request.setAttribute("errorMessage", "Không có đơn hàng nào cần duyệt.");
         }
 
-        request.getRequestDispatcher("GDDuyetDon754.jsp").forward(request, response);
+        request.getRequestDispatcher("view/nhanvien/GDDuyetDon754.jsp").forward(request, response);
     }
 }

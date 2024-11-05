@@ -14,6 +14,6 @@ public class DangXuatServlet754 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
-        response.sendRedirect("login");
+        response.sendRedirect("/login");
     }
 }

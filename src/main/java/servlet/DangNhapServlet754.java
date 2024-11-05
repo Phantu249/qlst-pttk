@@ -15,11 +15,11 @@ import java.io.IOException;
 public class DangNhapServlet754 extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        if (request.getSession().getAttribute("user") != null) {
-//            response.sendRedirect("GDChinh754.jsp");
-//            return;
-//        }
-        request.getRequestDispatcher("GDDangNhap754.jsp").forward(request, response);
+        if (request.getSession().getAttribute("user") != null) {
+            response.sendRedirect("view/nguoidung/GDChinh754.jsp");
+            return;
+        }
+        request.getRequestDispatcher("view/nguoidung/GDDangNhap754.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,11 +34,11 @@ public class DangNhapServlet754 extends HttpServlet {
                 // Nếu đăng nhập thành công
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                response.sendRedirect("GDChinh754.jsp");
+                response.sendRedirect("view/nguoidung/GDChinh754.jsp");
             } else {
                 // Nếu đăng nhập thất bại
                 request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu không đúng.");
-                request.getRequestDispatcher("GDDangNhap754.jsp").forward(request, response);
+                request.getRequestDispatcher("view/nguoidung/GDDangNhap754.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();

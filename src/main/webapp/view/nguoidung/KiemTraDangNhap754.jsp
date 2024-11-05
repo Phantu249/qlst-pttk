@@ -11,7 +11,7 @@
     NguoiDung754 user = (NguoiDung754) session.getAttribute("user");
 
     if (user == null) {
-        response.sendRedirect("login");
+        response.sendRedirect("/login");
         return;
     }
 %>

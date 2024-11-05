@@ -15,7 +15,7 @@
     NguoiDung754 user = (NguoiDung754) session.getAttribute("user");
 
     if (user == null) {
-        response.sendRedirect("login");
+        response.sendRedirect("/login");
         return;
     }
 
@@ -29,10 +29,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Details</title>
-    <link rel="stylesheet" href="css/inhoadon.css">
+    <link rel="stylesheet" href="../../css/inhoadon.css">
 </head>
 <body>
-<%@ include file="header.jsp" %>
+<%@ include file="../nguoidung/header.jsp" %>
 <div class="inv-container">
     <div class="inv-card">
         <header class="inv-header">
@@ -41,7 +41,7 @@
         <%
             HoaDonTrucTuyen754 hd = (HoaDonTrucTuyen754) request.getAttribute("hd");
             if (hd == null) {
-                response.sendRedirect("duyet-don");
+                response.sendRedirect("/duyet-don");
                 return;
             }
         %>
