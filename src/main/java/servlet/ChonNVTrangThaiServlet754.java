@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet("/chon-nv-trang-thai")
-public class ChonNVTrangThai754 extends HttpServlet {
+public class ChonNVTrangThaiServlet754 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idHDStr = request.getParameter("idHD");
         if (idHDStr == null) {
