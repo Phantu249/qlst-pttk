@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS tblNguoiDung754 (
                                                id INTEGER PRIMARY KEY AUTOINCREMENT,
                                                ten VARCHAR(255),
-                                               username VARCHAR(255),
+                                               username VARCHAR(255) UNIQUE,
                                                password VARCHAR(255),
                                                ngaySinh DATE DEFAULT CURRENT_TIMESTAMP,
                                                diaChi VARCHAR(255),
-                                               email VARCHAR(255),
-                                               sdt VARCHAR(255),
+                                               email VARCHAR(255) UNIQUE,
+                                               sdt VARCHAR(255) UNIQUE,
                                                vaiTro VARCHAR(255)
 );
 

@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class ChiTietHangTrucTuyen754DAO extends DAO {
+public class ChiTietHangTrucTuyen754DAO extends DAO754 {
     public ChiTietHangTrucTuyen754DAO() {
         super();
     }
@@ -39,33 +39,4 @@ public class ChiTietHangTrucTuyen754DAO extends DAO {
         }
         return list;
     }
-
-//    public boolean getChiTietHangById(ChiTietHangTrucTuyen754 cth) {
-//        try {
-//            String query = "SELECT * FROM tblChiTietHangTrucTuyen754 WHERE id = ?";
-//            PreparedStatement ps = con.prepareStatement(query);
-//            ps.setInt(1, cth.getId());
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                cth.setSoLuong(rs.getInt("soLuong"));
-//                cth.setGia(rs.getFloat("gia"));
-//                HoaDonTrucTuyen754 hd = new HoaDonTrucTuyen754();
-//                hd.setId(rs.getInt("idHoaDon"));
-//                HoaDonTrucTuyen754DAO hdDAO = new HoaDonTrucTuyen754DAO();
-//                if (hdDAO.getHoaDonById(hd)) {
-//                    cth.setHoaDon(hd);
-//                }
-//                MatHang754 mh = new MatHang754();
-//                mh.setId(rs.getInt("idMatHang"));
-//                MatHang754DAO mhDAO = new MatHang754DAO();
-//                if (mhDAO.getMatHangById(mh)) {
-//                    cth.setMatHang(mh);
-//                }
-//                return true;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return false;
-//    }
 }

@@ -2,12 +2,10 @@ package dao;
 
 import models.NguoiDung754;
 
-import java.sql.CallableStatement;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class NguoiDung754DAO extends DAO {
+public class NguoiDung754DAO extends DAO754 {
     public NguoiDung754DAO() {
         super();
     }

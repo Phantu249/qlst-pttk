@@ -3,15 +3,13 @@ package models;
 public class HinhAnh754 {
     private int id;
     private String path;
-    private int maMatHang;
 
     public HinhAnh754() {
     }
 
-    public HinhAnh754(int id, String path, int maMatHang) {
+    public HinhAnh754(int id, String path) {
         this.id = id;
         this.path = path;
-        this.maMatHang = maMatHang;
     }
 
     public int getId() {
@@ -30,11 +28,4 @@ public class HinhAnh754 {
         this.path = path;
     }
 
-    public int getMaMatHang() {
-        return maMatHang;
-    }
-
-    public void setMaMatHang(int maMatHang) {
-        this.maMatHang = maMatHang;
-    }
 }

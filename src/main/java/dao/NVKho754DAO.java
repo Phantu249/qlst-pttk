@@ -5,7 +5,7 @@ import models.NVKho754;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class NVKho754DAO extends DAO {
+public class NVKho754DAO extends DAO754 {
     public NVKho754DAO() {
         super();
     }

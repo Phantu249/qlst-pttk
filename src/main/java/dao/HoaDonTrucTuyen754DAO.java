@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class HoaDonTrucTuyen754DAO extends DAO {
+public class HoaDonTrucTuyen754DAO extends DAO754 {
     public HoaDonTrucTuyen754DAO() {
         super();
     }

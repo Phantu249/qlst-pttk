@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="QLST.db" uuid="1df82459-01c5-46e3-9bb0-7ecfc6cb3303">
+    <data-source source="LOCAL" name="QLST.db" uuid="83b7b0ac-cafc-4ab6-90bf-003c66150de8">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>

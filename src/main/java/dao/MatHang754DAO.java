@@ -4,12 +4,11 @@ import models.HinhAnh754;
 import models.MatHang754;
 import models.NhaCungCap754;
 
-import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class MatHang754DAO extends DAO {
+public class MatHang754DAO extends DAO754 {
     public MatHang754DAO() {
         super();
     }

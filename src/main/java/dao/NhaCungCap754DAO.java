@@ -5,7 +5,7 @@ import models.NhaCungCap754;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class NhaCungCap754DAO extends DAO {
+public class NhaCungCap754DAO extends DAO754 {
     public NhaCungCap754DAO() {
         super();
     }

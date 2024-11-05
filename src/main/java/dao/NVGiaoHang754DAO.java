@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class NVGiaoHang754DAO extends DAO {
+public class NVGiaoHang754DAO extends DAO754 {
     public NVGiaoHang754DAO() {
         super();
     }

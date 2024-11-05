@@ -5,7 +5,7 @@ import models.KhachHang754;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class KhachHang754DAO extends DAO {
+public class KhachHang754DAO extends DAO754 {
     public KhachHang754DAO() {
         super();
     }
